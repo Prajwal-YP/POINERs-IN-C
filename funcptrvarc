@@ -1,0 +1,67 @@
+/*
+	Pragram Name	:	funcptrvar.c
+	Author			:	Prajwal Y P
+	Task			:	To know about pointer holding function address .
+*/
+
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+	void add(int,int);
+	void sub(int,int);
+	void mul(int,int);
+	void div(int,int);
+	void (*p)(int,int);	//POINTER FUNCTION ACTING AS POLYMORPHIC FUNCTION
+	
+	int a,b;
+	char ch;
+	
+	printf("\nEnter 2 numbers : \n");
+	scanf("%d%d",&a,&b);
+	
+	printf("\nEnter option : ");
+	fflush(stdin);
+	ch=getchar();
+	if(ch=='+')
+		p=add;
+	else if(ch=='-')
+		p=sub;
+	else if(ch=='*')
+		p=mul;
+	else if(ch=='/')
+		p=div;
+	else
+	{
+		printf("Invalid Option !!");
+		exit(0);
+	}
+		
+	p(a,b);		//CALLING POINTER FUNCTION
+	printf("\n\n------------------------------------------------------------\n\n");
+	return 0;
+}
+
+//POINTER FUNCTION IS REFRENCED TO ANY ONE OF THE FOLLOWING FUNCTION BASED ON OPTION
+
+void add(int x,int y)
+{
+	printf("Sum : %d",x+y);	
+}
+
+void sub(int x,int y)
+{
+	printf("Difference : %d",abs(x-y));
+}
+
+void mul(int x,int y)
+{
+	printf("Product : %d",x*y);
+}
+
+void div(int x,int y)
+{
+	printf("Difference : %f",(float)x/y);
+}
+
